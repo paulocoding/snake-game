@@ -1,14 +1,13 @@
 // paints the square white
-var paintGridWhite = function(){
-  $(this).css('background-color', '#fff');
+var paintGridWhite = function(s){
+  $(s).css('background-color', '#fff');
 };
 
 // paints the square black
-var paintGridBlack = function(){
-  $(this).css('background-color', '#000');
+var paintGridBlack = function(s){
+  $(s).css('background-color', '#000');
 };
 
-var mySquare = '<div class="square"></div>';
 
 // generates a grid with l squares on each side
 var generateGrid = function(totalWidth, l){
@@ -22,4 +21,4 @@ var generateGrid = function(totalWidth, l){
   }
   $('.square').css('width',squareWidth);
   $('.square').css('height', squareWidth);
-}
+};

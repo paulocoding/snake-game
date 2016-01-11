@@ -54,39 +54,3 @@ var snake = {
 var food = {
   position: [4,4]  
 }
-// paints the square white
-var paintGridWhite = function(s){
-  $(s).css('background-color', '#fff');
-};
-
-// paints the square black
-var paintGridBlack = function(s){
-  $(s).css('background-color', '#000');
-};
-
-
-// generates a grid with l squares on each side
-var generateGrid = function(totalWidth, l){
-  var squareWidth=(totalWidth/l)+'px';
-  var $grid=$('.level');
-  // squaring side size
-  l = l*l;
-  $grid[0].innerHTML="";
-  for(var i=0;i<l;i++){
-    $grid.append(mySquare);
-  }
-  $('.square').css('width',squareWidth);
-  $('.square').css('height', squareWidth);
-};
-
-var main = function() {
-  generateGrid(grid.width, grid.cols);
-  grid.init();
-  grid.update(snake, food);
-  grid.draw();
-};
-// end of main function
-
-
-
-$(document).ready(main);

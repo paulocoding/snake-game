@@ -36,7 +36,8 @@ body {
 
 h1 {
   font-size: 3rem;
-  text-align: left; }
+  text-align: center;
+  color: #2699ee; }
 
 h2 {
   font-size: 2rem;
@@ -52,6 +53,11 @@ a, a:visited {
 
 a:hover {
   color: #ee9933; }
+
+.container {
+  display: block;
+  width: 400px;
+  margin: 0 auto; }
 
 .level {
   clear: both;
