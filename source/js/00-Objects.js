@@ -1,12 +1,10 @@
-//  "pixel" unit of the grid:
-var mySquare = '<div class="square"></div>';
-
 // grid object:
 var grid = {
   //  initializing grid dimensions
   width : 400,
   cols : 24,
   state : [],
+  
   
   //  initializing grid state to false
   init : function(){
@@ -63,28 +61,33 @@ var snake = {
   },
   top: function(){
     // cant turn back on itself
-    if(this.direction.y !== 1){
+    if(this.direction.y !== 1 && this.alive){
       this.direction.x = 0;
       this.direction.y = -1;
     }
   },
   bot: function(){
-    if(this.direction.y !== -1){
+    if(this.direction.y !== -1 && this.alive){
       this.direction.x = 0;
       this.direction.y = 1;
     }
   },
   left: function(){
-    if(this.direction.x !== 1){
+    if(this.direction.x !== 1 && this.alive){
       this.direction.x = -1;
       this.direction.y = 0;
     }
   },
   right: function(){
-    if(this.direction.x !== -1){
+    if(this.direction.x !== -1 && this.alive){
       this.direction.x = 1;
       this.direction.y = 0;
     }
+  },
+  die : function(){
+    this.alive = false;
+    this.direction.x = 0;
+    this.direction.y = 0;
   },
   update : function(grd, fud){
     var nextPos = [this.position[0][0]+this.direction.x, this.position[0][1]+this.direction.y];
@@ -105,6 +108,12 @@ var snake = {
     if(fud.eaten(grd, nextPos)){
       this.size += 1;
     }
+    for(var i = 0, l = this.position.length; i<l;i++){
+      if(nextPos[0]===this.position[i][0] && nextPos[1]===this.position[i][1]){
+        this.die();
+      }
+    }
+    
     
     this.position.unshift(nextPos);
     if(this.position.length>this.size){

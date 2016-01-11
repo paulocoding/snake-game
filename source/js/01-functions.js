@@ -1,3 +1,6 @@
+//  "pixel" unit of the grid:
+var mySquare = '<div class="square"></div>';
+
 // paints the square white
 var paintGridWhite = function(s){
   $(s).css('background-color', '#fff');
