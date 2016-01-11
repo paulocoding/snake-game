@@ -13,7 +13,7 @@ var paintGridBlack = function(s){
 var generateGrid = function(totalWidth, l){
   var squareWidth=(totalWidth/l)+'px';
   var $grid=$('.level');
-  // squaring side size
+  // squaring side size 
   l = l*l;
   $grid[0].innerHTML="";
   for(var i=0;i<l;i++){
@@ -22,3 +22,9 @@ var generateGrid = function(totalWidth, l){
   $('.square').css('width',squareWidth);
   $('.square').css('height', squareWidth);
 };
+
+function randomPos() {
+  var x = Math.floor(Math.random()*grid.cols);
+  var y = Math.floor(Math.random()*grid.cols);
+  return [x,y];
+}
