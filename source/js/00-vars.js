@@ -86,20 +86,24 @@ var snake = {
       this.direction.y = 0;
     }
   },
-  update : function(grd){
+  update : function(grd, fud){
     var nextPos = [this.position[0][0]+this.direction.x, this.position[0][1]+this.direction.y];
+    //infinite edge:
     if(nextPos[0]<0){
       nextPos[0] = grd.cols-1;
     }
     if(nextPos[0]>grd.cols-1){
       nextPos[0] = 0;
     }
-    
     if(nextPos[1]<0){
       nextPos[1] = grd.cols-1;
     }
     if(nextPos[1]>grd.cols-1){
       nextPos[1] = 0;
+    }
+    
+    if(fud.eaten(grd, nextPos)){
+      this.size += 1;
     }
     
     this.position.unshift(nextPos);
@@ -120,5 +124,12 @@ var food = {
   },
   init: function(grd){
     this.newFood(grd);
-  }
+  },
+  eaten : function(grd, p){
+    if(p[0]===this.position[0] && p[1]===this.position[1]){
+      this.newFood(grd);
+      return true;
+    }
+    return false;
+  } 
 }
