@@ -1,9 +1,14 @@
 //  "pixel" unit of the grid:
 var mySquare = '<div class="square"></div>';
 
-// paints the square white
-var paintGridWhite = function(s){
+// paints the snake squares
+var paintGridSnake = function(s){
   $(s).css('background-color', '#fff');
+};
+
+// paints the food square
+var paintGridFood = function(s){
+  $(s).css('background-color', '#ee9933');
 };
 
 // paints the square black

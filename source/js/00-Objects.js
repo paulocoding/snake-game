@@ -1,3 +1,6 @@
+// score var:
+var score = 0;
+
 // grid object:
 var grid = {
   //  initializing grid dimensions
@@ -6,19 +9,22 @@ var grid = {
   state : [],
   
   
-  //  initializing grid state to false
+  //  initializing grid state to 0
+  //  0 - empty
+  //  1 - snake
+  //  2 - food  
   init : function(){
     for(var y = 0; y<this.cols;y++){
       this.state.push([]);
       for(var x = 0; x < this.cols; x++){
-        this.state[y].push(false);
+        this.state[y].push(0);
       }
     }
   },
   reset : function(){
     for(var y = 0; y<this.cols;y++){
       for(var x = 0; x < this.cols; x++){
-        this.state[y][x] = false;
+        this.state[y][x] = 0;
       }
     }
   },
@@ -32,9 +38,11 @@ var grid = {
     var $grid=$('.level');
     for(var y=0, l=this.cols;y<l;y++){
       for(var x=0; x<l; x++){
-        if(this.state[y][x]){
-          paintGridWhite($grid.children()[y*l+x]);
-        } else {
+        if(this.state[y][x]===1){
+          paintGridSnake($grid.children()[y*l+x]);
+        } else if(this.state[y][x]===2){
+          paintGridFood($grid.children()[y*l+x]);          
+        } else{
           paintGridBlack($grid.children()[y*l+x]);
         }
       }
@@ -44,9 +52,9 @@ var grid = {
   update : function(s, f){
     this.reset();
     for(var i = 0, l = s.position.length; i < l;i++){
-      this.state[s.position[i][1]][s.position[i][0]] = true;
+      this.state[s.position[i][1]][s.position[i][0]] = 1;
     }
-    this.state[f.position[1]][f.position[0]] = true;
+    this.state[f.position[1]][f.position[0]] = 2;
   }
 
 }
@@ -107,7 +115,10 @@ var snake = {
     
     if(fud.eaten(grd, nextPos)){
       this.size += 1;
+      score++;
+      $('.score').text(score);
     }
+    // die when colliding with its body
     for(var i = 0, l = this.position.length; i<l;i++){
       if(nextPos[0]===this.position[i][0] && nextPos[1]===this.position[i][1]){
         this.die();

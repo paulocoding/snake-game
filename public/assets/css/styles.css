@@ -59,10 +59,19 @@ a:hover {
   width: 400px;
   margin: 0 auto; }
 
+.stats {
+  text-align: center;
+  color: #ee9933;
+  font-size: 2em;
+  margin: 0;
+  padding: 0; }
+  .stats .score {
+    font-size: 1em; }
+
 .level {
   clear: both;
   width: 400px;
-  padding-top: 10px; }
+  margin-top: 4px; }
 
 .square {
   display: block;

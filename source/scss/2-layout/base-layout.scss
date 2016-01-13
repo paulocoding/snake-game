@@ -39,3 +39,13 @@ a:hover {
   width: 400px;
   margin: 0 auto;
 }
+.stats {
+  text-align: center;
+	color: #ee9933;
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+  .score{
+    font-size: 1em;
+  }
+}
