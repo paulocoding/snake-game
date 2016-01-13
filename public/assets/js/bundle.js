@@ -192,12 +192,6 @@ function randomPos() {
   return [x,y];
 }
 
-var gameUpdate = function(){
-  // food.newFood(grid);
-  snake.update(grid, food);
-  grid.update(snake, food);
-  grid.draw();
-};
 
 var main = function() {
   generateGrid(grid.width, grid.cols);
@@ -229,7 +223,17 @@ var main = function() {
     $( "#target" ).keydown();
   });
   
-  setInterval(gameUpdate, 80);
+  
+  var gameLoop = setInterval(function(){
+    snake.update(grid, food);
+    grid.update(snake, food);
+    grid.draw();
+    if(!snake.alive){
+      $('.game-title').text("LOST");
+      clearInterval( gameLoop );
+    }    
+  }, 80);
+  
 };
 // end of main function
 
