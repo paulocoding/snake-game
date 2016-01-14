@@ -8,28 +8,21 @@ var main = function() {
   grid.draw();
   
   $( "html" ).keydown(function( event ) {
-    if ( event.which == 13 ) {
-    event.preventDefault();
-    }
-    if(event.key == "ArrowRight"){
+    if(event.which === 39){
       snake.right();
     }
-    if(event.key == "ArrowLeft"){
+    if(event.which === 37){
       snake.left();
     }
-    if(event.key == "ArrowUp"){
+    if(event.which === 38){
       snake.top();
     }
-    if(event.key == "ArrowDown"){
+    if(event.which === 40){
       snake.bot();
     }
     
   });
-  
-  $( "#other" ).click(function() {
-    $( "#target" ).keydown();
-  });
-  
+   
   
   var gameLoop = setInterval(function(){
     snake.update(grid, food);

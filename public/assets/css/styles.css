@@ -18,7 +18,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.6em; }
 
 body {
@@ -35,12 +35,12 @@ body {
   color: #dfffff; }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: center;
   color: #2699ee; }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-align: left;
   font-weight: 300; }
 
@@ -54,6 +54,9 @@ a, a:visited {
 a:hover {
   color: #ee9933; }
 
+.text-center {
+  text-align: center; }
+
 .container {
   display: block;
   width: 400px;
@@ -62,7 +65,7 @@ a:hover {
 .stats {
   text-align: center;
   color: #ee9933;
-  font-size: 2em;
+  font-size: 1.5em;
   margin: 0;
   padding: 0; }
   .stats .score {
