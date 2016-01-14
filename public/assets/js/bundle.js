@@ -146,7 +146,15 @@ var food = {
     this.newFood(grd);
   },
   eaten : function(grd, p){
-    if(p[0]===this.position[0] && p[1]===this.position[1]){
+    // sanity check to avoid infinite loop
+    // in the case someone actually manages to
+    // get the snake to fill the board 
+    if( score+4+1 >= grd.cols*grd.cols-2){
+      console.log('board full');
+      return true;
+    }
+    
+    if(p[0]===this.position[0] && p[1]===this.position[1] ){
       this.newFood(grd);
       return true;
     }
