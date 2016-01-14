@@ -1,6 +1,8 @@
 
 
 var main = function() {
+  // set size of the grid:
+  grid.cols = 20;
   generateGrid(grid.width, grid.cols);
   grid.init();
   food.init(grid);

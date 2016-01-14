@@ -5,7 +5,7 @@ var score = 0;
 var grid = {
   //  initializing grid dimensions
   width : 400,
-  cols : 24,
+  cols : 20,
   state : [],
   
   
@@ -61,7 +61,7 @@ var grid = {
 
 var snake = {
   alive: true,
-  position: [[11,11]],
+  position: [[3,3]],
   size: 4, 
   direction: {
     x : 1,
@@ -194,6 +194,8 @@ function randomPos() {
 
 
 var main = function() {
+  // set size of the grid:
+  grid.cols = 20;
   generateGrid(grid.width, grid.cols);
   grid.init();
   food.init(grid);
